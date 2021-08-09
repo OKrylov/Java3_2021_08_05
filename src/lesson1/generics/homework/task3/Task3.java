@@ -27,5 +27,20 @@ public class Task3 {
 
         System.out.println("Compare oranges and apples: " + appleBox.compareTo(orangeBox));
         System.out.println("Compare oranges and apples2: " + appleBox2.compareTo(orangeBox));
+
+        Box testBox = new Box();
+        testBox.add(new Fruit() {
+            @Override
+            public String getName() {
+                return null;
+            }
+
+            @Override
+            public double getWeight() {
+                return 5.0;
+            }
+        });
+
+        appleBox.compareTo(testBox);
     }
 }
