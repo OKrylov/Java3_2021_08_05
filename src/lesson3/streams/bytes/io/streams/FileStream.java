@@ -47,7 +47,7 @@ public class FileStream {
         try (FileInputStream in = new FileInputStream(IMAGE_FILE_NAME)) {
             byte[] bytes = in.readAllBytes();
 
-            System.out.println("Прочитано " + bytes.length + "байт");
+            System.out.println("Прочитано " + bytes.length + " байт");
             for (byte b : bytes) {
                 System.out.print(b + " ");
             }

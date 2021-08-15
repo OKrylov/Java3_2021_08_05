@@ -6,9 +6,12 @@ import java.io.PipedOutputStream;
 
 public class PipedStream {
 
+    private static PipedInputStream in;
+    private static PipedOutputStream out;
+
     public static void main(String[] args) throws IOException {
-        PipedInputStream in = null;
-        PipedOutputStream out = null;
+        in = null;
+        out = null;
         try {
             in  = new PipedInputStream();
             out = new PipedOutputStream();
@@ -34,6 +37,6 @@ public class PipedStream {
                 e.printStackTrace();
             }
         }
-
     }
+
 }
