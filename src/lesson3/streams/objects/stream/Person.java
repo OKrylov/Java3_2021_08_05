@@ -1,5 +1,6 @@
 package lesson3.streams.objects.stream;
 
+import java.io.*;
 import java.util.Objects;
 
 public class Person extends Human {
@@ -39,13 +40,29 @@ public class Person extends Human {
 
 //        @Override
 //    public void writeExternal(ObjectOutput out) throws IOException {
-//        out.writeObject(name);
+//        out.writeUTF(name);
 //        out.writeObject(friend);
+////        out.writeInt(33);
 //    }
 //
-//    @Override
+//        @Override
 //    public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
-//        name = (String) in.readObject();
+//        name = in.readUTF();
 //        friend = (Person) in.readObject();
+////        age = in.readInt();
+//    }
+//
+//    // without serializable
+//    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+//        name = in.readUTF();
+//        friend = (Person) in.readObject();
+////        age = in.readInt();
+//    }
+//
+//    // without serializable
+//    private void writeObject(ObjectOutputStream out) throws IOException {
+//        out.writeUTF(name);
+//        out.writeObject(friend);
+////        out.writeInt(33);
 //    }
 }

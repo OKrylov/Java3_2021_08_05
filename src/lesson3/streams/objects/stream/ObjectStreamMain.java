@@ -9,6 +9,9 @@ public class ObjectStreamMain {
         Person p2 = new Person("p2");
         Person p3 = new Person("p3");
 
+        p3.name = "friend";
+        p3.age = 18;
+
         p1.age = 25;
 
         p1.friend = p3;
@@ -16,16 +19,16 @@ public class ObjectStreamMain {
 
         System.out.println(p1);
         System.out.println(p2);
+        System.out.println(p3);
 //
 
-//        ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("objects.txt")));
-//        out.writeObject(p1);
-//        out.writeObject(p2);
-//        out.close();
-//
+        ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("objects.txt")));
+        out.writeObject(p1);
+        out.writeObject(p2);
+        out.close();
 
         System.out.println("--------");
-//
+
         ObjectInputStream in = new ObjectInputStream(new FileInputStream("objects.txt"));
         Person p4 = (Person) in.readObject();
         Person p5 = (Person) in.readObject();
@@ -33,6 +36,8 @@ public class ObjectStreamMain {
 
         System.out.println(p4);
         System.out.println(p5);
+        System.out.println(p5.friend);
+        System.out.println(p4.friend);
     }
 
 }
