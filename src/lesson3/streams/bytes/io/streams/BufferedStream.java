@@ -17,7 +17,12 @@ public class BufferedStream {
     private static final char SYMBOL = 'Z';
 
     public static void main(String[] args) throws Exception {
-        measureTime(BufferedStream::fileWriter, "Per byte writer");
+        measureTime(new ThrowableRunnable() {
+            @Override
+            public void exec() throws Exception {
+                fileWriter();
+            }
+        }, "Per byte writer");
         measureTime(BufferedStream::arrayFileWriter, "Array writer");
         measureTime(BufferedStream::bufferFileWriter, "Buffered writer");
     }

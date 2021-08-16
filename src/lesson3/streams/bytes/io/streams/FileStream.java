@@ -12,6 +12,9 @@ public class FileStream {
     public static final String IMAGE_FILE_NAME = "break.jpg";
 
     public static void main(String[] args) {
+        System.out.println(Byte.toUnsignedInt((byte)-86));
+
+
         byte[] bw = {71, 72};
         byte[] br = new byte[20];
         writeData(bw, false);

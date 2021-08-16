@@ -7,12 +7,10 @@ public class ObjectStreamMain {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         Person p1 = new Person("p1");
         Person p2 = new Person("p2");
-        Person p3 = new Person("p3");
-
-        p3.name = "friend";
-        p3.age = 18;
+        Person p3 = new Person("friend");
 
         p1.age = 25;
+        p3.age = 18;
 
         p1.friend = p3;
         p2.friend = p3;

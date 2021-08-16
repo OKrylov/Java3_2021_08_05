@@ -25,9 +25,13 @@ public class ByteArray {
     private static void readByteArray() {
         byte[] arr = {100, 25, 50};
         ByteArrayInputStream is = new ByteArrayInputStream(arr);
-        int x;
-        while ( (x = is.read()) != -1 ) {
-            System.out.print(x + " ");
+//        int x;
+//        while ( (x = is.read()) != -1 ) {
+//            System.out.print(x + " ");
+//        }
+        for (byte aByte : is.readAllBytes()) {
+            System.out.print(aByte + " ");
         }
+
     }
 }

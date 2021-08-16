@@ -3,10 +3,15 @@ package lesson3.streams.objects.stream;
 import java.io.*;
 import java.util.Objects;
 
-public class Person extends Human {
+public class Person extends Human /*implements Externalizable*/ {
 
-    public String name;
+    public /*transient*/ String name;
     public Person friend;
+
+//    public Person(String name, int age) {
+//        this.name = name;
+//        this.age = age;
+//    }
 
     public Person(String name) {
         this.name = name;
@@ -18,9 +23,10 @@ public class Person extends Human {
     @Override
     public String toString() {
         return "Person{" +
-                "name='" + name + '\'' +
+                "age=" + age +
+                ", test='" + test + '\'' +
+                ", name='" + name + '\'' +
                 ", friend=" + friend +
-                ", age=" + age +
                 '}';
     }
 
@@ -42,14 +48,14 @@ public class Person extends Human {
 //    public void writeExternal(ObjectOutput out) throws IOException {
 //        out.writeUTF(name);
 //        out.writeObject(friend);
-////        out.writeInt(33);
+//        out.writeInt(33);
 //    }
 //
 //        @Override
 //    public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
 //        name = in.readUTF();
 //        friend = (Person) in.readObject();
-////        age = in.readInt();
+//        age = in.readInt();
 //    }
 //
 //    // without serializable
