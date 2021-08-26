@@ -1,4 +1,4 @@
-package lesson5.concurrency2.utils;
+package lesson5.concurrency.part2.utils;
 
 import java.util.ArrayList;
 import java.util.List;

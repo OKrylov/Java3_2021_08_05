@@ -1,4 +1,4 @@
-package lesson5.concurrency2.lock;
+package lesson5.concurrency.part2.lock;
 
 import java.util.HashMap;
 import java.util.Map;

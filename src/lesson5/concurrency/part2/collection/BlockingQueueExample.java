@@ -1,4 +1,4 @@
-package lesson5.concurrency2.collection;
+package lesson5.concurrency.part2.collection;
 
 import java.util.Random;
 import java.util.concurrent.ArrayBlockingQueue;
