@@ -2,10 +2,7 @@ package lesson5.concurrency.part2.utils;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.*;
 
 public class SimpleCDL {
 
@@ -28,12 +25,15 @@ public class SimpleCDL {
         for (Callable<Object> task : tasks) {
             executorService.submit(task);
         }
-//        executorService.invokeAll(tasks);
+//        List<Future<Object>> futures = executorService.invokeAll(tasks);
 
         try {
             // пока счетчик не приравняется нулю, будем стоять на этой строке
             //Аналог threads.forEach(thread -> thread.join())
             cdl.await();
+//            for (Future<Object> future : futures) {
+//                future.get();
+//            }
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

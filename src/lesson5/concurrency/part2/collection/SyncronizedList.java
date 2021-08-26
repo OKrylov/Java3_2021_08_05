@@ -9,9 +9,9 @@ public class SyncronizedList {
 
     public static void main(String[] args) throws InterruptedException {
 //        List<String> data = Collections.synchronizedList(new ArrayList<>());
-//        List<String> data = new CopyOnWriteArrayList<>();
+        List<String> data = new CopyOnWriteArrayList<>();
 
-        List<String> data = new ArrayList<>();
+//        List<String> data = new ArrayList<>();
         createProducer(data).start();
         createProducer(data).start();
 
@@ -24,15 +24,18 @@ public class SyncronizedList {
         Thread reader = new Thread(() -> {
             while (true) {
 //                List<String> snapshot = new ArrayList<>();
-//
+
 //                synchronized (data) {
 //                    snapshot.addAll(data);
 //                }
 
-                for (String datum : data) {
-//                for (String datum : snapshot) {
-                    System.out.print(datum);
-                }
+
+//                synchronized (data) {
+                    for (String datum : data) {
+//                    for (String datum : snapshot) {
+                        System.out.print(datum);
+                    }
+//                }
 
                 System.out.println();
 

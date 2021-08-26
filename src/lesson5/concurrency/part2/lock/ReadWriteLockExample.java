@@ -18,31 +18,32 @@ public class ReadWriteLockExample {
         ReadWriteLock lock = new ReentrantReadWriteLock();
 
         Runnable writeTask = () -> {
-            System.out.println(Thread.currentThread().getName() + " Try to write");
+            String threadName = Thread.currentThread().getName();
+            System.out.println(threadName + " Try to write");
             lock.writeLock().lock();
             try {
-                System.out.println(Thread.currentThread().getName() + " Start write");
+                System.out.println(threadName + " Start write");
 
                 sleep(3);
                 map.put("foo", "bar");
-
-                System.out.println(Thread.currentThread().getName() + " Finish write");
             } finally {
+                System.out.println(threadName + " Finish write");
                 lock.writeLock().unlock();
             }
         };
 
         Runnable readTask = () -> {
-            System.out.println(Thread.currentThread().getName() + " Try to read");
+            String threadName = Thread.currentThread().getName();
+            System.out.println(threadName + " Try to read");
             lock.readLock().lock();
             try {
-                System.out.println(Thread.currentThread().getName() + " Start read");
+                System.out.println(threadName + " Start read");
 
                 System.out.println(map.get("foo"));
                 sleep(5);
 
-                System.out.println(Thread.currentThread().getName() + " Finish read");
             } finally {
+                System.out.println(threadName + " Finish read");
                 lock.readLock().unlock();
             }
         };

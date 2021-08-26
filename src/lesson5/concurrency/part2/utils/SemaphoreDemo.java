@@ -10,7 +10,7 @@ import java.util.concurrent.Semaphore;
 public class SemaphoreDemo {
 
     public static void main(String[] args) throws InterruptedException {
-        Semaphore smp = new Semaphore(2);
+        Semaphore smp = new Semaphore(1, true);
 
         ExecutorService executorService = Executors.newCachedThreadPool(new CustomThreadFactory("Semaphore thread"));
 
@@ -27,15 +27,19 @@ public class SemaphoreDemo {
 
     private static Runnable createTask(Semaphore smp) {
         return () -> {
+            String threadName = Thread.currentThread().getName();
             try {
-                System.out.println(Thread.currentThread().getName() + " перед семафором");
+                System.out.println(threadName + " перед семафором");
+//                synchronized (SemaphoreDemo.class) {
+//
+//                }
                 smp.acquire();
-                System.out.println(Thread.currentThread().getName() + " получил доступ к ресурсу");
+                System.out.println(threadName + " получил доступ к ресурсу");
                 Thread.sleep(500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } finally {
-                System.out.println(Thread.currentThread().getName() + " освободил ресурс");
+                System.out.println(threadName + " освободил ресурс");
                 smp.release();
             }
         };

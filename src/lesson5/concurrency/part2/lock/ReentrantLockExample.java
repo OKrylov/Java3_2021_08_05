@@ -1,5 +1,6 @@
 package lesson5.concurrency.part2.lock;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.*;
@@ -24,8 +25,8 @@ public class ReentrantLockExample {
 
         executor.submit(() -> {
             try {
-                if (lock.tryLock()) {
-//                if (lock.tryLock(1, TimeUnit.SECONDS)) {
+//                if (lock.tryLock()) {
+                if (lock.tryLock(1, TimeUnit.SECONDS)) {
                     try {
                         count++;
                         sleep(100);
@@ -33,6 +34,8 @@ public class ReentrantLockExample {
                     } finally {
                         lock.unlock();
                     }
+                } else {
+                    System.out.println("Lock is busy!");
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -41,8 +44,8 @@ public class ReentrantLockExample {
 
         executor.submit(() -> {
             try {
-                if (lock.tryLock()) {
-//                if (lock.tryLock(1, TimeUnit.SECONDS)) {
+//                if (lock.tryLock()) {
+                if (lock.tryLock(1, TimeUnit.SECONDS)) {
                     try {
                         count++;
                         sleep(100);
@@ -51,6 +54,8 @@ public class ReentrantLockExample {
                     } finally {
                         lock.unlock();
                     }
+                }  else {
+                    System.out.println("Lock is busy!");
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -71,20 +76,26 @@ public class ReentrantLockExample {
         Lock lock = new ReentrantLock();
 
         Runnable task = () -> {
-            System.out.println(Thread.currentThread().getName() + ": Before lock");
+            String threadName = Thread.currentThread().getName();
+            System.out.println(threadName + ": Before lock");
             try {
                 lock.lock();
-                System.out.println(Thread.currentThread().getName() + " is acquired lock");
+                System.out.println(threadName + " is acquired lock");
                 Thread.sleep(500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } finally {
-                System.out.println(Thread.currentThread().getName() + ": After lock");
+                System.out.println(threadName + ": After lock");
                 lock.unlock();
             }
         };
 
         List<Callable<Object>> tasks = Collections.nCopies(5, Executors.callable(task));
+
+//        List<Callable<Object>> result = new ArrayList<>();
+//        for (int i = 0; i < 5; i++) {
+//            result.add(Executors.callable(task));
+//        }
         ExecutorService executorService = Executors.newFixedThreadPool(5);
         executorService.invokeAll(tasks);
         executorService.shutdown();

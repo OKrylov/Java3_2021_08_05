@@ -13,6 +13,8 @@ public class CustomThreadFactory implements ThreadFactory {
 
     @Override
     public Thread newThread(Runnable r) {
-        return new Thread(r, String.format("%s - %d", threadNamePrefix, counter++));
+        Thread thread = new Thread(r, String.format("%s - %d", threadNamePrefix, counter++));
+//        thread.setDaemon(true);
+        return thread;
     }
 }

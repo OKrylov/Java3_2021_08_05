@@ -33,13 +33,14 @@ public class BarrierExample {
     private static Runnable createTask(CyclicBarrier cb) {
         return () -> {
             try {
-                System.out.println(Thread.currentThread().getName() + " готовится");
+                String threadName = Thread.currentThread().getName();
+                System.out.println(threadName + " готовится");
                 Thread.sleep(100 + (int) (3000 * Math.random()));
-                System.out.println(Thread.currentThread().getName() + " готов");
+                System.out.println(threadName + " готов");
 
                 cb.await();
 
-                System.out.println(Thread.currentThread().getName() + " запустился");
+                System.out.println(threadName + " запустился");
 
             } catch (Exception e) {
                 e.printStackTrace();

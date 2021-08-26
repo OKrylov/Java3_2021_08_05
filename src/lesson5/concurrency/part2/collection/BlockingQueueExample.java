@@ -26,7 +26,7 @@ public class BlockingQueueExample {
                 while (true) {
                     Integer value = queue.take();
                     System.out.println("Current value is " + value + ". Queue size is " + queue.size());
-                    Thread.sleep(50);
+                    Thread.sleep(10);
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();
