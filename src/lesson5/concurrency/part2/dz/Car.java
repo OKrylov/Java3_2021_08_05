@@ -7,6 +7,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class Car implements Runnable {
     private static int CARS_COUNT;
     private static AtomicBoolean hasWinner = new AtomicBoolean(false);
+//    private static Boolean hasWinner = false;
 
     private Race race;
     private int speed;
@@ -71,12 +72,14 @@ public class Car implements Runnable {
         if ( !hasWinner.getAndSet(true) ) {
             System.out.println(this.name + " - WIN");
         }
-//        synchronized (hasWinner) {
-//            if (hasWinner)
-//                return;
+//        if (!hasWinner) {
+//            synchronized (hasWinner) {
+//                if (hasWinner)
+//                    return;
 //
-//            System.out.println(this.name + " - WIN");
-//            hasWinner = true;
+//                System.out.println(this.name + " - WIN");
+//                hasWinner = true;
+//            }
 //        }
     }
 }
