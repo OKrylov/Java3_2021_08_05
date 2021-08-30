@@ -7,10 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Lesson2_SQL" />
+        <module name="Lesson6_TestAndLogging" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Lesson2_SQL" target="16" />
+      <module name="Lesson6_TestAndLogging" target="16" />
     </bytecodeTargetLevel>
   </component>
 </project>
