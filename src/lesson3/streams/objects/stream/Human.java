@@ -1,11 +1,11 @@
 package lesson3.streams.objects.stream;
 
-import java.io.Serial;
+//import java.io.Serial;
 import java.io.Serializable;
 
 public class Human implements Serializable {
 
-    @Serial
+//    @Serial
     private static final long serialVersionUID = -2797844370655404141L;
 
     public int age;

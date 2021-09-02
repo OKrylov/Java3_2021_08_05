@@ -11,9 +11,9 @@ public class TestStorage {
         intStorage.display();
         System.out.println();
 
-        if (intStorage.get(0) instanceof Integer v0 && intStorage.get(1) instanceof Integer v1) {
-            System.out.println(v0 + v1);
-        }
+//        if (intStorage.get(0) instanceof Integer v0 && intStorage.get(1) instanceof Integer v1) {
+//            System.out.println(v0 + v1);
+//        }
 
 
 //        StringStorage strStorage = new StringStorage(5);
