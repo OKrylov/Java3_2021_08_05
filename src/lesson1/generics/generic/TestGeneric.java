@@ -7,6 +7,8 @@ public class TestGeneric {
     public static void main(String[] args) {
         GenericStorage<Integer> intStorage = new GenericStorageImpl<>(5);
 
+
+
         intStorage.add(10);
         intStorage.add(2);
         intStorage.add(1);
